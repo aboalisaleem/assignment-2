@@ -1,7 +1,7 @@
 
 
 
-function asetGreeting() {
+function setGreeting() {
     const hour = new Date().getHours();
     let greeting;
     
@@ -16,25 +16,31 @@ function asetGreeting() {
 
 }
 
+
 function setupThemeToggle() {
-    const themeToggle= document.getElementById('theme-toggle');
-    const savedTheme =localStorage.getItem('theme');
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
     
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
-        themeToggle.textContent= '☀️';
+        themeToggle.textContent = '☀️';
     }
     
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
         
         if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme','dark');
-            themeToggle.textContent ='☀️';
+            localStorage.setItem('theme', 'dark');
+            themeToggle.textContent = '☀️';
         } else {
             localStorage.setItem('theme', 'light');
-            themeToggle.textContent= '🌙';
+            themeToggle.textContent = '🌙';
         }
     });
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    setGreeting();
+    setupThemeToggle();
+})
